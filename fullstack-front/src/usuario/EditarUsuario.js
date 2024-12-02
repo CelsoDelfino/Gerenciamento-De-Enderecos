@@ -24,7 +24,16 @@ export default function EditUsuario() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
+
+    if (name === "cpf") {
+      let cpfFormatado = value.replace(/\D/g, ""); 
+      cpfFormatado = cpfFormatado.replace(/(\d{3})(\d)/, "$1.$2");
+      cpfFormatado = cpfFormatado.replace(/(\d{3})(\d)/, "$1.$2");
+      cpfFormatado = cpfFormatado.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      setUser({ ...user, cpf: cpfFormatado }); 
+    }else{
+      setUser({ ...user, [name]: value });
+    } 
   };
 
   const validaCampos = () => {
@@ -116,7 +125,7 @@ export default function EditUsuario() {
             </div>
             <div className="mb-3 text-start">
             <label htmlFor="Nome" className="form-label">CPF</label>
-              <input type={"text"} value={cpf} onChange={handleChange} name="cpf" className="form-control" placeholder="Digite seu CPF" />
+              <input type={"text"} value={cpf} onChange={handleChange} name="cpf" className="form-control" placeholder="Digite seu CPF" maxLength="14" />
               {errors.cpf && <small className="text-danger">{errors.cpf}</small>}
             </div>
             <div className="mb-3 text-start">
