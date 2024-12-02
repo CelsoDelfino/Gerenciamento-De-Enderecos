@@ -4,8 +4,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Home from './pages/Home';
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import AddUsuario from './usuario/AddUsuario';
-import EditUsuario from './usuario/EditUsuario';
-import ListaUsuario from './usuario/ListaUsuario';
+import EditarUsuario from './usuario/EditarUsuario';
+import DetalhesUsuario from './usuario/DetalhesUsuario';
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/adicionarUsuario" element={<AddUsuario />} />
-          <Route path="/editarUsuario/:id" element={<EditUsuario />} />
-          <Route path="/detalhes/:id" element={<ListaUsuario />} />
+          <Route path="/editarUsuario/:id" element={<EditarUsuario />} />
+          <Route path="/detalhes/:id" element={<DetalhesUsuario />} />
         </Routes>
       </Router>
       
