@@ -1,5 +1,6 @@
 package api.java.Fullstack_backend.controller;
 
+import api.java.Fullstack_backend.dto.UsuarioDTO;
 import api.java.Fullstack_backend.model.Endereco;
 import api.java.Fullstack_backend.model.Usuario;
 import api.java.Fullstack_backend.service.UsuarioService;
@@ -34,27 +35,27 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> inserirUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity<UsuarioDTO> inserirUsuario(@RequestBody Usuario usuario) {
         try {
-            Usuario usuarioCriado = usuarioService.criarUsuario(usuario);
-            return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCriado);
+            UsuarioDTO usuarioDTO = usuarioService.criarUsuario(usuario);
+            return ResponseEntity.status(HttpStatus.CREATED).body(usuarioDTO);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     @GetMapping
-    public List<Usuario> listarUsuarios() {
+    public List<UsuarioDTO> listarUsuarios() {
         return usuarioService.listarUsuarios();
     }
 
     @GetMapping("/{id}")
-    public Usuario pegarUsuarioPorId(@PathVariable Long id) {
+    public UsuarioDTO pegarUsuarioPorId(@PathVariable Long id) {
         return usuarioService.pegarUsuarioPorId(id);
     }
 
     @PutMapping("/{id}")
-    public Usuario atualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuarioUp) throws Exception {
+    public UsuarioDTO atualizarUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioUp) throws Exception {
         return usuarioService.atualizarUsuario(id, usuarioUp);
     }
 
