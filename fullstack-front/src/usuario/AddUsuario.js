@@ -63,6 +63,33 @@ export default function AddUsuario() {
     }
   };
 
+  const buscarCep = async () => {
+
+    try {
+      const response = await axios.get(`http://localhost:8080/usuarios/buscarCep/${cep}`);
+      const data = response.data;
+
+      if (data.erro) {
+        setErrors({ cep: "CEP não encontrado." });
+        return;
+      }
+
+      setUser({
+        ...user,
+        logradouro: data.logradouro || "",
+        bairro: data.bairro || "",
+        cidade: data.localidade || "",
+        estado: data.uf || "",
+      });
+
+      setErrors({});
+
+    } catch (err) {
+      console.error(err);
+      setErrors({ cep: "CEP inválido" });
+    }
+  };
+
 
   return (
     <div className="container">
@@ -71,7 +98,7 @@ export default function AddUsuario() {
           <h2 className="text-center m-2">Registrar</h2>
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
-              <input type={"text"} value={cep} onChange={handleChange}  name="cep" className="form-control" placeholder="Digite seu CEP" maxLength="8"/>
+              <input type={"text"} value={cep} onChange={handleChange} onBlur={buscarCep} name="cep" className="form-control" placeholder="Digite seu CEP" maxLength="8"/>
               {errors.cep && <small className="text-danger">{errors.cep}</small>}
             </div>
             <div className="mb-3">
