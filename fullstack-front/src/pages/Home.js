@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-
+import {Link, useParams} from 'react-router-dom';
 
 export default function Home() {
 
     const[users, setUsers] = useState([]);
-    
+    const {id} = useParams();
 
     useEffect( () => {
         loadUsuarios();
@@ -17,7 +17,10 @@ export default function Home() {
         setUsers(result.data);
     }
 
-   
+    const excluirUsuario = async (id) =>{
+        await axios.delete(`http://localhost:8080/usuarios/${id}`)
+        loadUsuarios();
+    }
 
     return (
         <div classNameName="conteiner">
@@ -45,6 +48,14 @@ export default function Home() {
                                     <td>{user.nome}</td>
                                     <td>{user.cpf}</td>
                                     <td>{user.estado}</td>
+                                    <td>
+                                        <Link className="btn btn-primary mx-2" to={`/detalhes/${user.id}`}>Visualizar</Link>
+                                        <Link className="btn btn-outline-primary mx-2" 
+                                        to={`/editarUsuario/${user.id}`}>Editar 
+                                        </Link>
+                                        <button className="btn btn-danger mx-2" onClick={() => excluirUsuario(user.id)}>Deletar</button>
+                                    </td>
+                                    
                                 </tr>
                         ))
 
