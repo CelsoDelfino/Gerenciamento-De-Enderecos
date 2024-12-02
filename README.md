@@ -35,7 +35,7 @@ CREATE DATABASE GerenciamentoEnderecoDB;
   - construir as tabelas necessárias do projeto
   - construir nossas colunas que serão utilizadas no projeto
 
- FRONTEND
+* FRONTEND
 4. rodar os scripts abaixo para instalação das dependências necessárias
   - npm i react-router-dom
   - npm i bootstrap
