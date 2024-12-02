@@ -1,5 +1,6 @@
-Gerenciamento de Endereços
 
+Gerenciamento de Endereços
+--------------------------
 * A aplicação permite que o usuário faça:
   - listagem de usuarios cadastrados
   - adicionar usuários de acordo com o CEP inserido (caso seja válido)
@@ -7,7 +8,7 @@ Gerenciamento de Endereços
   - editar usuários acordo com o CEP inserido (caso seja válido)
  
 Tecnologias utilizadas
-
+-----------------------
 * Backend
   - Linguagem Java 17
   - SpringBoot 3.3.6
@@ -22,19 +23,19 @@ Tecnologias utilizadas
 
  
 Instruções para rodar o projeto
-
+-
 1. Clonar o projeto
 2. Utilizando algum client MySQL rodar o script abaixo para criação do database
----------------------------------------
+
 CREATE DATABASE GerenciamentoEnderecoDB;
-----------------------------------------
-*BACKEND
+
+* BACKEND
 3. Startar o projeto backend (Java)
   - essa ação irá ligar o servidor
   - construir as tabelas necessárias do projeto
   - construir nossas colunas que serão utilizadas no projeto
 
-*FRONTEND
+ FRONTEND
 4. rodar os scripts abaixo para instalação das dependências necessárias
   - npm i react-router-dom
   - npm i bootstrap
