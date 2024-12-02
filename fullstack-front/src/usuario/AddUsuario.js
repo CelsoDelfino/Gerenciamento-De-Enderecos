@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';  
 
 export default function AddUsuario() {
@@ -109,7 +109,7 @@ export default function AddUsuario() {
               )}
             </div>
             <button type="submit" className="btn btn-outline-primary">Adicionar</button>
-            <button type="submit" className="btn btn-danger mx-2" >Cancelar</button>
+            <Link type="submit" className="btn btn-danger mx-2" to="/">Cancelar</Link>
           </form>
         </div>
       </div>

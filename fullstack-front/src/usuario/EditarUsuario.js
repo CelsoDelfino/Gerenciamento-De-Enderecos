@@ -148,7 +148,7 @@ export default function EditUsuario() {
               )}
             </div>
             <button type="submit" className="btn btn-outline-primary">Adicionar</button>
-            <button type="submit" className="btn btn-danger mx-2">Cancelar</button>
+            <Link type="submit" className="btn btn-danger mx-2" to="/">Cancelar</Link>
           </form>
         </div>
 
